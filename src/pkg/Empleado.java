@@ -6,27 +6,29 @@ public class Empleado {
 	float ventaMes;
 	float horasExtra;
 	
-	 float calculoNominaBruta(TipoEmpleado tipo, float ventasMes, float horasExtra) {
+	public static float  calculoNominaBruta(TipoEmpleado tipo, float ventasMes, float horasExtra) {
 		 int salario = 0;
 		 //salario base
 		 if(tipo == TipoEmpleado.VENDEDOR) {
 			 salario = 2000;
-		 }else {
+		 };
+		 if(tipo == TipoEmpleado.ENCARGADO) {
 			 salario = 2500;
 		 };
 		 //primas
-		 if(ventaMes >=1000) {
-			 if(ventaMes >=1500) {
+		 if(ventasMes >=1000) {
+			 if(ventasMes >=1500) {
 				 salario += 200;
 			 }else {
 				 salario += 100;	 
 			 }
 		 };
 		 //horas extra
-		 salario += horasExtra*30;
+		 if(horasExtra>0)
+			 salario += horasExtra*30;
 		 return salario;
 	 }
-	 float calculoNominaNeta(float nominaBruta) {
+	public static float calculoNominaNeta(float nominaBruta) {
 		 if(nominaBruta <= 2100) {
 			 return nominaBruta;
 		 }else {
